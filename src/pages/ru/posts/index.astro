@@ -1,0 +1,13 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Card from "../../../components/Card.astro";
+const allPosts = await Astro.glob('../../../content/posts/ru/*.md');
+const pageTitle = "Blog";
+
+---
+<Layout title={pageTitle}>
+  <h1 class="text-white">Посты</h1>
+  <ul>
+    {allPosts.map((post) => <Card title={post.frontmatter.title} href={post.url} date={post.frontmatter.date}></Card>)}
+  </ul>
+</Layout>
