@@ -7,6 +7,8 @@ description: "Adventures in the mountains of Georgia."
 lang: "en"
 author: Mike
 tags: ["georgia", "trail"]
+image: "https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+alt: "A view of the mountains"
 ---
 
 # Trip to Georgia

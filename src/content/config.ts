@@ -1,17 +1,19 @@
-// 1. Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
 
-// 2. Define a `type` and `schema` for each collection
 const blogCollection = defineCollection({
-  type: 'content', // v2.5.0 and later
+  type: 'content',
   schema: z.object({
+    layout: z.string().default('../../../layouts/PostLayout.astro'),
     title: z.string(),
-    tags: z.array(z.string()),
+    date: z.coerce.date(), // Validates that 'date' is in a date format
+    description: z.string(),
+    lang: z.string().default('ru'), // Defaults to 'en' if not provided
+    tags: z.array(z.string()).default([]), // Defaults to an empty array if not provided
     image: z.string().optional(),
+    alt: z.string().optional(),
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   'posts': blogCollection,
 };

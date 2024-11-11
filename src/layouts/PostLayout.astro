@@ -1,9 +1,32 @@
 ---
 const { frontmatter } = Astro.props;
+import Header from '../components/EngHeader.astro';
 ---
-<h1>{frontmatter.title}</h1>
-<p>{frontmatter.pubDate</p>
-<p><em>{frontmatter.description}</em></p>
-<p>Written by: {frontmatter.author}</p>
-<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-<slot />
+
+<Header />
+
+<article class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+  <header class="text-center mb-8">
+    <h1 class="text-3xl font-semibold text-gray-900 mb-4">{frontmatter.title}</h1>
+    <div class="text-sm text-gray-600">
+      <p>{frontmatter.date}</p>
+      <p class="italic">{frontmatter.description}</p>
+      <p>Written by: <strong>{frontmatter.author}</strong></p>
+    </div>
+  </header>
+
+  <!-- Render the image -->
+  {frontmatter.image && (
+    <div class="text-center mb-6">
+      <img
+        src={frontmatter.image}
+        alt={frontmatter.alt || "Image description not available"}
+        class="w-full max-w-3xl mx-auto rounded-lg shadow-md"
+      />
+    </div>
+  )}
+
+  <main class="text-lg text-gray-800 leading-relaxed">
+    <slot />
+  </main>
+</article>

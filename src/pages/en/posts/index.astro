@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Card from "../../../components/Card.astro";
+
 const allPosts = await Astro.glob('../../../content/posts/en/*.md');
 const pageTitle = "Blog";
 
@@ -8,6 +9,10 @@ const pageTitle = "Blog";
 <Layout title={pageTitle}>
   <h1 class="text-white">Posts</h1>
   <ul>
-    {allPosts.map((post) => <Card title={post.frontmatter.title} href={post.url} date={post.frontmatter.date}></Card>)}
+    {allPosts.map((post) => {
+      // Derive the URL for each post based on its file path
+      const href = `/en/posts/${post.frontmatter.slug}`;  // Assuming the slug corresponds to the filename
+      return <Card title={post.frontmatter.title} href={href} date={post.frontmatter.date} body="213" />;
+    })}
   </ul>
 </Layout>

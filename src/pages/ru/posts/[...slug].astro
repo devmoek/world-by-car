@@ -1,0 +1,35 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: BlogEntry;
+}
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
+
+const entry = await getEntry("posts", slug);
+
+if (entry === undefined) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await entry.render();
+
+
+type BlogEntry = CollectionEntry<'posts'>;
+
+export async function getStaticPaths() {
+  const blogEntries: BlogEntry[] = await getCollection('posts');
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+---
+
+<Content />

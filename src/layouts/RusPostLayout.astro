@@ -1,0 +1,102 @@
+---
+import Header from '../components/RusHeader.astro';
+
+interface Frontmatter {
+    title: string;
+    date: string;
+    description: string;
+    author: string;
+    image?: string;
+    alt?: string;
+}
+
+interface Props {
+	title: string;
+    frontmatter: Frontmatter;
+}
+
+const { title, frontmatter } = Astro.props as Props;
+---
+
+<!doctype html>
+	<html lang="ru">
+        <head>
+        <meta charset="UTF-8" />
+        <title>{title}</title>
+        <meta name="description" content={frontmatter.description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={frontmatter.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={Astro.url || ''} /> <!-- Optional: use Astro.url if available, or provide a dynamic URL -->
+        <meta property="og:image" content={frontmatter.image || '/default-og-image.jpg'} />
+        <meta property="og:locale" content="ru_RU" /> <!-- Assuming Russian; adjust as necessary -->
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={frontmatter.title} />
+        <meta name="twitter:description" content={frontmatter.description} />
+        <meta name="twitter:image" content={frontmatter.image || '/default-og-image.jpg'} />
+        </head>
+
+
+        <Header/>
+
+		<body>
+		<article class="prose prose-lg prose-invert max-w-3xl mx-auto p-6 mt-10 bg-gray-900 text-white rounded-lg shadow-lg">
+            <header class="text-center mb-8">
+                <h1 class="text-3xl font-semibold text-white mb-4">{frontmatter.title}</h1>
+                <div class="text-sm text-gray-200">
+                    <span>{frontmatter.date} • {frontmatter.author}</span>
+                    <p class="italic">{frontmatter.description}</p>
+                </div>
+            </header>
+
+            {frontmatter.image && (
+                <div class="text-center mb-6">
+                <img
+                    src={frontmatter.image}
+                    alt={frontmatter.alt || `Изображение поста ${frontmatter.title}`}
+                    class="w-full max-w-3xl mx-auto rounded-lg shadow-md"
+                />
+                </div>
+            )}
+
+            <main class="text-lg text-white leading-relaxed">
+                <slot />
+            </main>
+        </article>
+		</body>
+	</html>
+    <style is:global>
+        :root {
+            --accent: 136, 58, 234;
+            --accent-light: 224, 204, 250;
+            --accent-dark: 49, 10, 101;
+            --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+            );
+        }
+        html {
+            font-family: system-ui, sans-serif;
+            background: #13151a;
+        }
+        code {
+            font-family:
+                Menlo,
+                Monaco,
+                Lucida Console,
+                Liberation Mono,
+                DejaVu Sans Mono,
+                Bitstream Vera Sans Mono,
+                Courier New,
+                monospace;
+        }
+    </style>
