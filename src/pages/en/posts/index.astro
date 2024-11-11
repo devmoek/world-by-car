@@ -10,9 +10,8 @@ const pageTitle = "Blog";
   <h1 class="text-white">Posts</h1>
   <ul>
     {allPosts.map((post) => {
-      // Derive the URL for each post based on its file path
-      const href = `/en/posts/${post.frontmatter.slug}`;  // Assuming the slug corresponds to the filename
-      return <Card title={post.frontmatter.title} href={href} date={post.frontmatter.date} body="213" />;
+      const href = `/en/posts/${post.frontmatter.slug}`;
+      return <Card title={post.frontmatter.title} href={href} date={post.frontmatter.date} />;
     })}
   </ul>
 </Layout>
