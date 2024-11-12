@@ -1,5 +1,5 @@
 ---
-import { Send, MapPin, Phone, Mail, Stars } from 'lucide-astro';
+import { Send, MapPin, Mail, Stars } from 'lucide-astro';
 
 import Layout from "../../layouts/Layout.astro"
 import Header from "../../components/RusHeader.astro"
@@ -8,7 +8,7 @@ import Footer from "../../components/Footer.astro"
 
 <Layout title="Контакты">
     <Header />
-     <div class="min-h-screen bg-slate-950 py-12 px-4">
+     <div class="min-h-screen bg-[#13151A] py-12 px-4">
       <div class="max-w-5xl mx-auto">
         {/* Header Section */}
         <div class="text-center mb-16 relative">
@@ -22,30 +22,27 @@ import Footer from "../../components/Footer.astro"
 
         <div class="grid md:grid-cols-3 gap-8 mb-16">
           {/* Contact Info Cards */}
-          <div class="bg-slate-900/50 backdrop-blur-sm p-6 rounded-lg border border-slate-800 hover:border-indigo-500/50 transition-colors">
+          <div class="bg-[#161B23] backdrop-blur-sm p-6 rounded-lg border border-slate-800 hover:border-indigo-500/50 transition-colors">
             <MapPin class="w-6 h-6 text-indigo-400 mb-4" />
             <h3 class="font-semibold text-white mb-2">Адрес</h3>
-            <p class="text-slate-400">ул. Звёздная, 123</p>
-            <p class="text-slate-400">Космос-Сити, КС 12345</p>
+            <p class="text-slate-400">Грузия</p>
           </div>
 
-          <div class="bg-slate-900/50 backdrop-blur-sm p-6 rounded-lg border border-slate-800 hover:border-indigo-500/50 transition-colors">
-            <Phone class="w-6 h-6 text-indigo-400 mb-4" />
-            <h3 class="font-semibold text-white mb-2">Телефон</h3>
-            <p class="text-slate-400">+7 (555) 123-45-67</p>
-            <p class="text-slate-400">Пн-Пт 9:00-18:00 МСК</p>
+          <div class="bg-[#161B23] backdrop-blur-sm p-6 rounded-lg border border-slate-800 hover:border-indigo-500/50 transition-colors">
+            <Send class="w-6 h-6 text-indigo-400 mb-4" />
+            <h3 class="font-semibold text-white mb-2">Телеграм</h3>
+            <a href="https://t.me/devmoek" class="text-slate-400">@devmoek</a>
           </div>
 
-          <div class="bg-slate-900/50 backdrop-blur-sm p-6 rounded-lg border border-slate-800 hover:border-indigo-500/50 transition-colors">
+          <div class="bg-[#161B23] backdrop-blur-sm p-6 rounded-lg border border-slate-800 hover:border-indigo-500/50 transition-colors">
             <Mail class="w-6 h-6 text-indigo-400 mb-4" />
             <h3 class="font-semibold text-white mb-2">Эл. почта</h3>
-            <p class="text-slate-400">hello@astroblogs.ru</p>
-            <p class="text-slate-400">support@astroblogs.ru</p>
+            <p class="text-slate-400">info@devmoek.com</p>
           </div>
         </div>
 
         {/* Contact Form */}
-        <div class="bg-slate-900/50 backdrop-blur-sm rounded-lg border border-slate-800 p-8 max-w-2xl mx-auto">
+        <div class="bg-[#161B23] backdrop-blur-sm rounded-lg border border-slate-800 p-8 max-w-2xl mx-auto">
           <form class="space-y-6">
             <div class="grid md:grid-cols-2 gap-6">
               <div>
