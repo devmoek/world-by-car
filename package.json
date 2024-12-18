@@ -13,7 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/tailwind": "^5.1.2",
     "@tailwindcss/typography": "^0.5.15",
-    "astro": "^4.16.9",
+    "astro": "^4.16.18",
     "autoprefixer": "^10.4.20",
     "lucide-astro": "^0.456.0",
     "postcss": "^8.4.47",
